@@ -1,7 +1,7 @@
 {
   "name": "v3-synilausn",
   "version": "1.0.0",
-  "description": "Verkefni 3 sýnilausn",
+  "description": "Verkefni 3",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
