@@ -1,0 +1,19 @@
+<%- include('header') -%>
+
+<form method="post" action="/login">
+  <div class="field">
+    <label for="username">Notendanafn</label>
+    <input type="text" name="username" id="username" value="<%= username %>" class="">
+  </div>
+  <div class="field">
+    <label for="password">Lykilorð</label>
+    <input type="password" name="password" id="password" value="<%= password %>" class="">
+  </div>
+  <div class="login_button_container">
+    <button class="login_button">Staðfesta</button>
+  </div>
+  <% if(errors != "") { %>
+  <li class="error"><label><%= errors %></label></li>
+  <% } %>
+</form>
+<%- include('footer') -%>

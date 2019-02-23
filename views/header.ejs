@@ -6,10 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:700" rel="stylesheet">
     <title><%= title %></title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
     <header>
-
+      
     </header>
-    <main>
+  <main>
+    <div class = "header">
+    <% if (locals.user){ %>
+      <div class="header_titles">
+        <a class="<%= path === 'apply'? 'path_underline':'path'%>" href="./">Atvinnuumsókn</a>
+        <a class="<%= path === 'applications'? 'path_underline':'path'%>" href="./applications">Umsóknir</a>
+        <a class="<%= path === 'admin'? 'path_underline':'path'%>" href="./admin">Notendur</a>
+      </div>
+      <div class = "header_user">
+        <p><%- locals.user.username %></p>
+        <a href="./logout">Útskrá</a>
+      </div>
+  <% } else { %>
+  <div class="header_titles">
+    <a class="<%= path === 'apply'? 'path_underline':'path'%>" href="../">Atvinnuumsókn</a>
+    <a class="<%= path === 'login'? 'path_underline':'path'%>" href="../login">Innskráning</a>
+    <a class="<%= path === 'register'? 'path_underline':'path'%>" href="../register">Nýskráning</a>
+  </div>
+<% } %>
+</div>
+    

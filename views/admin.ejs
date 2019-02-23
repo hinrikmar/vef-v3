@@ -1,0 +1,33 @@
+<%- include('header') -%>
+  <h1>Notendur</h1>
+<form method="post" action="/admin">
+    <table class=>
+        <tr>
+            <% if (locals.isAdmin){ %>
+            <th>Stjórnandi?</th>
+            <% } %>
+            <th><%= username %></th>
+            <th><%= name %></th>
+            <th><%= email %></th>
+        </tr>
+        <% for(var i=0; i < list.length; i++) { %>
+        <tr>
+            <% if (locals.isAdmin){ %>
+                <td>
+                    <input type="checkbox" value="<%- list[i].username %>" name="admin" <%= list[i].admin === true ? 'checked' : '' %>>
+                </td>
+            <% } %>
+        <td ><%= list[i].username %></td>
+        <td><%= list[i].name%></td>
+        <td><%= list[i].email%></td>
+    </tr>
+    <% } %>
+    </table>
+    <% if (locals.isAdmin){ %>
+        <div class="admin_button">
+        <button>Uppfæra stjórnendur</button>
+        </div>
+    <%}%>
+<form>
+
+<%- include('footer') -%>

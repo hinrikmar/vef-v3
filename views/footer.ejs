@@ -1,3 +1,22 @@
+      <div class = "footer">
+      <% if (locals.user){ %>
+        <div class="header_titles">
+          <a class="<%= path === 'apply'? 'title_underline':'title'%>" href="./">Atvinnuumsókn</a>
+          <a class="<%= path === 'application'? 'title_underline':'title'%>" href="./applications">Umsóknir</a>
+          <a class="<%= path === 'admin'? 'title_underline':'title'%>" href="./admin">Notendur</a>
+        </div>
+        <div class = "header_user">
+          <p><%- locals.user.username %></p>
+          <a href="./logout">Útskrá</a>
+        </div>
+      <% } else { %>
+      <div class="header_titles">
+      <a class="<%= path === 'apply'? 'title_underline':'title'%>" href="../">Atvinnuumsókn</a>
+      <a class="<%= path === 'login'? 'title_underline':'title'%>" href="../login">Innskráning</a>
+      <a class="<%= path === 'register'? 'title_underline':'title'%>" href="../register">Nýskráning</a>
+      </div>
+      <% } %>
+      </div>
     </main>
   </body>
 </html>
