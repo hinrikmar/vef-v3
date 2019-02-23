@@ -94,9 +94,6 @@ const sanitazions = [
  * @returns {string} Formi fyrir umsókn
  */
 function form(req, res) {
-  if (!req.isAuthenticated()) {
-    return res.redirect('/login');
-  }
 
   const data = {
     title: 'Atvinnuumsókn',
@@ -108,7 +105,7 @@ function form(req, res) {
     errors: [],
     path: 'apply',
   };
-  res.render('form', data);
+  return res.render('form', data);
 }
 
 /**
