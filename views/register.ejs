@@ -3,19 +3,19 @@
 <h1>Innskráning</h1>
 
 <form method="post" action="/register">
-  <div class="field">
+  <div class="field<%= locals.isInvalid('name', errors) ?  ' field--invalid' : '' %>">
     <label class="name">Nafn:</label>
     <input type="text" name="name" id="name" value="<%= name %>" class="">
   </div>
-  <div class="field">
+  <div class="field<%= locals.isInvalid('email', errors) ?  ' field--invalid' : '' %>">
     <label class="email">Netfang:</label>
     <input type="text" name="email" id="email" value="<%= email %>" class="">
   </div>
-  <div class="field">
+  <div class="field<%= locals.isInvalid('username', errors) ?  ' field--invalid' : '' %>">
     <label class="username">Notendanafn:</label>
     <input type="text" name="username" id="username" value="<%= username %>" class="">
   </div>
-  <div class="field">
+  <div class="field<%= locals.isInvalid('password', errors) ?  ' field--invalid' : '' %>">
     <label class="password">Lykilorð:</label>
     <input type="password" name="password" id="password" value="<%= password %>" class="">
   </div>
@@ -23,6 +23,15 @@
     <label class="passwordAgain">Lykilorð, aftur:</label>
     <input type="password" name="passwordAgain" id="passwordAgain" value="<%= passwordAgain %>" class="">
   </div>
+
+  <% if (errors.length > 0) { %>
+    <h2>Vandræði við að senda umsókn:</h2>
+    <ul class="errors">
+      <% errors.forEach((error) => { %>
+        <li class="error"><label for="<%= error.param %>"><%= error.msg %></label></li>
+      <% }); %>
+    </ul>
+  <% } %>
 
   <button>Innskrá</button>
 </form>

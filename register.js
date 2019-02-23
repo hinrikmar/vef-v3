@@ -107,6 +107,7 @@ function showErrors(req, res, next) {
     username,
     password,
     passwordAgain,
+    path: 'register',
   };
   
   const validation = validationResult(req);
@@ -153,6 +154,7 @@ function register(req, res) {
     username: '',
     password: '',
     passwordAgain: '',
+    errors: [],
     path: 'register',
   };
   return res.render('register', data);

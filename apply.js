@@ -137,6 +137,7 @@ function showErrors(req, res, next) {
     phone,
     text,
     job,
+    path: 'apply',
   };
 
   const validation = validationResult(req);
@@ -190,7 +191,7 @@ async function formPost(req, res) {
  * @param {object} res Response hlutur
  */
 function thanks(req, res) {
-  return res.render('thanks', { title: 'Takk fyrir umsóknina' });
+  return res.render('thanks', { title: 'Takk fyrir umsóknina', path: 'thanks' });
 }
 
 router.get('/', form);

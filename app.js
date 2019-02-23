@@ -64,12 +64,16 @@ function thanksApplicaton(req, res) {
 }
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
-  res.status(404).render('error', { page: 'error', title: '404', error: '404 fannst ekki' });
+  res.status(404).render('error', { 
+    page: 'error', title: '404', error: '404 fannst ekki', path: 'error',
+  });
 }
 
 function errorHandler(error, req, res, next) { // eslint-disable-line
   console.error(error);
-  res.status(500).render('error', { page: 'error', title: 'Villa', error });
+  res.status(500).render('error', {
+    page: 'error', title: 'Villa', error, path: 'error',
+  });
 }
 
 async function start(username, password, done) {
@@ -173,11 +177,11 @@ app.use(errorHandler);
 
 const {
   HOST: hostname = '127.0.0.1',
-  PORT: port = process.env.port || 3000,
+  PORT: port = 3000,
 } = process.env;
 
 console.info(process.env);
 
-app.listen(port, hostname, () => {
+app.listen(port, () => {
   console.info(`Server running at http://${hostname}:${port}/`);
 });
