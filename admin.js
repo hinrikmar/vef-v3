@@ -9,7 +9,7 @@ async function getUsers(req, res) {
   if (!req.isAuthenticated()) {
     return res.redirect('/login');
   }
-  
+
   const myList = await allUsers();
 
   const data = {
@@ -29,10 +29,8 @@ async function changeUsers(req, res) {
   }
   if (req.user.admin) {
     const username = req.body.admin;
-    console.log('username');
-    console.log(username);
-    
-    const result = await changeAdmin(username);
+
+    await changeAdmin(username);
   }
   return getUsers(req, res);
 }

@@ -74,8 +74,6 @@ async function deleteRow(id) {
 async function usernameFound(username) {
   const q = 'SELECT * FROM users WHERE userName like $1';
   const result = await query(q, [username]);
-  console.log('in db');
-  console.log(result.rows);
   return result.rows;
 }
 
@@ -96,8 +94,10 @@ async function updateUser(username) {
   SET admin = false WHERE admin = true`;
   await query(q1);
   const q2 = 'UPDATE users SET admin = true WHERE username = $1';
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < values.length; i++) {
-    const result2 = await query(q2, [values[i]]);
+    // eslint-disable-next-line no-await-in-loop
+    await query(q2, [values[i]]);
   }
 }
 

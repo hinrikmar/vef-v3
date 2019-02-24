@@ -12,7 +12,6 @@ const register = require('./register');
 const admin = require('./admin');
 const applications = require('./applications');
 
-/* todo sækja stillingar úr env */
 const sessionSecret = process.env.SESSION_SECRET;
 
 if (!sessionSecret) {
@@ -31,7 +30,6 @@ app.use(session({
 
 app.use(express.urlencoded({ extended: true }));
 
-/* todo stilla session og passport */
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -53,18 +51,9 @@ function isInvalid(field, errors) {
 
 app.locals.isInvalid = isInvalid;
 
-/* todo setja upp login og logout virkni */
-
-function thanks(req, res) {
-  res.redirect('/login');
-}
-
-function thanksApplicaton(req, res) {
-  res.render('thanks', { title: 'Takk fyrir umsóknina', page: 'thanks' });
-}
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
-  res.status(404).render('error', { 
+  res.status(404).render('error', {
     page: 'error', title: '404', error: '404 fannst ekki', path: 'error',
   });
 }
@@ -122,7 +111,7 @@ app.get('/', (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect('/applications', applications);
   }
-  return res.redirect('/login');  
+  return res.redirect('/login');
 });
 
 app.get('/login', (req, res) => {
@@ -138,15 +127,15 @@ app.get('/login', (req, res) => {
     message = req.session.messages.join(', ');
     req.session.messages = [];
   }
-  console.log(message);
+
   const data = {
-    title: 'innskraning', 
-    username: '', 
-    password: '', 
-    errors: message, 
+    title: 'innskraning',
+    username: '',
+    password: '',
+    errors: message,
     path: 'login',
   };
-  res.render('login', data);
+  return res.render('login', data);
 });
 
 app.post('/login',
@@ -156,17 +145,13 @@ app.post('/login',
   }),
   (req, res) => {
     res.redirect('/applications');
-  },
-);
+  });
 
 app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
 
-app.use('/thanks', thanksApplicaton);
-app.get('/thanks', thanks);
-// app.use('/', apply);
 app.use('/register', register);
 app.use('/applications', applications);
 app.use('/admin', admin);

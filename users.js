@@ -1,6 +1,12 @@
 const bcrypt = require('bcrypt');
 
-const { insertUser, usernameFound, idFound, selectUsers, updateUser } = require('./db');
+const {
+  insertUser,
+  usernameFound,
+  idFound,
+  selectUsers,
+  updateUser,
+} = require('./db');
 
 async function comparePasswords(password, user) {
   const ok = await bcrypt.compare(password, user.password);
@@ -51,7 +57,7 @@ async function findById(id) {
 }
 async function changeAdmin(username) {
   if (username) {
-    res = await updateUser(username);
+    await updateUser(username);
   }
 
   return false;

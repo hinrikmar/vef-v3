@@ -64,7 +64,7 @@ const validations = [
     .withMessage('Lykilorð verður að vera amk. 8 stafir'),
 
   check('passwordAgain')
-    .isLength({ min: 8})
+    .isLength({ min: 8 })
     .withMessage('Lykilorð verður að vera amk. 8 stafir'),
 
   check('password')
@@ -109,7 +109,7 @@ function showErrors(req, res, next) {
     passwordAgain,
     path: 'register',
   };
-  
+
   const validation = validationResult(req);
 
   if (!validation.isEmpty()) {
