@@ -16,7 +16,6 @@ function catchErrors(fn) {
 
 /**
  * Ósamstilltur route handler fyrir umsóknarlista.
- *
  * @param {object} req Request hlutur
  * @param {object} res Response hlutur
  * @returns {string} Lista af umsóknum
@@ -31,7 +30,7 @@ async function applications(req, res) {
     title: 'Umsóknir',
     list,
     path: 'applications',
-    
+
   };
 
   return res.render('applications', data);
