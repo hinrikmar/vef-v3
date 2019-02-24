@@ -109,8 +109,6 @@ function form(req, res) {
 }
 
 /**
- * Route handler sem athugar stöðu á umsókn og birtir villur ef einhverjar,
- * sendir annars áfram í næsta middleware.
  *
  * @param {object} req Request hlutur
  * @param {object} res Response hlutur
